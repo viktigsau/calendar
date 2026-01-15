@@ -7,6 +7,9 @@ HOST: str = config["host"]
 PORT: int = config["port"]
 DEBUG: bool = config["debug"]
 
+if DEBUG:
+    print(f"Starting server on {HOST}:{PORT} (debug mode)")
+
 app = flask.Flask(__name__)
 
 @app.route("/")
@@ -28,5 +31,5 @@ def new_calendar_item(calendar_id: str):
 
     return flask.jsonify(data), 501
 
-if __name__ == "__main__":
-    app.run(host=HOST, port=PORT, debug=DEBUG)
+if __name__ == "__main__" and DEBUG:
+    app.run(host=HOST, port=PORT, debug=True)

@@ -16,33 +16,35 @@ class StrictDict(dict):
                     raise TypeError("invalid data for StrictDict")
 
 def load_conf(file:str="conf/server.conf", default_path:str="conf/default-server.conf"):
-    with open(file) as conf:
-        config = conf.read().split("\n")
-
     with open(default_path) as default:
-        config += default.read().split("\n")
+        config = default.read().split("\n")
+
+    with open(file) as conf:
+        config += conf.read().split("\n")
 
     out: dict[str, str | int | float | bool] = {}
 
     for line in config:
         line = line.strip()
 
-        if not line:
+        if not line or line.startswith("#"):
             continue
 
         try:
             key, value = line.split("=")
         except ValueError:
             raise ValueError(f"invalid config line: {line if line.strip() else "empty"}")
-        
+
         try:
             out[key] = int(value)
-        except TypeError:
+        except ValueError:
             try:
                 out[key] = float(value)
-            except TypeError:
-                try:
-                    out[key] = bool(value)
-                except TypeError:
+            except ValueError:
+                if value == "true":
+                    out[key] = True
+                elif value == "false":
+                    out[key] = False
+                else:
                     out[key] = value
     return out
