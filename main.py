@@ -1,6 +1,12 @@
 import flask
 import helpers
 
+# open config
+config = helpers.load_conf()
+HOST: str = config["host"]
+PORT: int = config["port"]
+DEBUG: bool = config["debug"]
+
 app = flask.Flask(__name__)
 
 @app.route("/")
@@ -23,4 +29,4 @@ def new_calendar_item(calendar_id: str):
     return flask.jsonify(data), 501
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host=HOST, port=PORT, debug=DEBUG)
