@@ -2,4 +2,6 @@
 
 ---
 
-docs comming soon
+## Index
+
+* [Configuration](config.md)
