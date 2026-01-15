@@ -2,8 +2,8 @@
 
 ## Overview
 
-[Documentation](docs/README.md)
-[GitHub Repository](https://github.com/viktigsau/calendar)
+* [Documentation](docs/README.md)
+* [GitHub Repository](https://github.com/viktigsau/calendar)
 
 info coming soon
 
