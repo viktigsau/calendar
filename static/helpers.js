@@ -24,3 +24,14 @@ function enableDrag(el, onMove) {
         dragging = false;
     });
 }
+
+function rgbToHex(r, g, b) {
+    if (typeof r === "string") {
+        const rgb = r.match(/\d+/g).map(Number);
+        [r, g, b] = rgb;
+    }
+    return "#" + [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+    }).join("");
+}
