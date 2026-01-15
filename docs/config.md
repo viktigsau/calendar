@@ -9,6 +9,8 @@ This shuld not be edited rather to edit the config a new file [/conf/server.conf
 
 value can be one of three types: `string`, `integer`, `floating point number` or `boolean`. *(see [properties](#properties) for spesifics)*
 
+lines starting with `#` are treated as comments and ignored.
+
 ## properties
 
 * `debug`: *(boolean)* Run in debug mode
