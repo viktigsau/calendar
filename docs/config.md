@@ -1,7 +1,7 @@
 # Configuration
 
-The default server configuration file is located in `conf/default-server.conf`.
-This shuld not be edited rather to edit the config a new file `/conf/server.conf` shuld be created, and any content in this file will overwride the default config.
+The default server configuration file is located in [conf/default-server.conf](conf/default-server.conf).
+This shuld not be edited rather to edit the config a new file [/conf/server.conf](/conf/server.conf) shuld be created, and any content in this file will overwride the default config.
 
 ## Format
 
