@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script src="/static/helpers.js"></script>
+    <script src="/static/layout.js"></script>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="sub-box">
+                <h1>My Calendar</h1>
+            </div>
+        </header>
+
+        <div class="layout">
+            <aside>
+                <div class="sub-box">
+                    <div class="wrapper">
+                        <div class="category">My Calerdars</div>
+                        <div class="calendar-list" data-category="my-calendars">
+                            <div class="new-calendar-item">
+                                <span class="color-indicator"></span>
+                                <span class="calendar-name">New Calendar</span>
+                            </div>
+                        </div>
+
+                        <div class="category">Other Calendars</div>
+                        <div class="calendar-list" data-category="other-calendars">
+                            <div class="new-calendar-item">
+                                <span class="color-indicator"></span>
+                                <span class="calendar-name">New Calendar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="slider">
+                <div class="visual"></div>
+            </div>
+
+            <main>
+                <div class="sub-box">
+                    <div class="scroll">
+                        <div class="week">
+                            <div class="time">
+                                <span class="time-label" data-hour="0">0 AM</span>
+                                <span class="time-label" data-hour="1">1 AM</span>
+                                <span class="time-label" data-hour="2">2 AM</span>
+                                <span class="time-label" data-hour="3">3 AM</span>
+                                <span class="time-label" data-hour="4">4 AM</span>
+                                <span class="time-label" data-hour="5">5 AM</span>
+                                <span class="time-label" data-hour="6">6 AM</span>
+                                <span class="time-label" data-hour="7">7 AM</span>
+                                <span class="time-label" data-hour="8">8 AM</span>
+                                <span class="time-label" data-hour="9">9 AM</span>
+                                <span class="time-label" data-hour="10">10 AM</span>
+                                <span class="time-label" data-hour="11">11 AM</span>
+                                <span class="time-label" data-hour="12">12 PM</span>
+                                <span class="time-label" data-hour="13">1 PM</span>
+                                <span class="time-label" data-hour="14">2 PM</span>
+                                <span class="time-label" data-hour="15">3 PM</span>
+                                <span class="time-label" data-hour="16">4 PM</span>
+                                <span class="time-label" data-hour="17">5 PM</span>
+                                <span class="time-label" data-hour="18">6 PM</span>
+                                <span class="time-label" data-hour="19">7 PM</span>
+                                <span class="time-label" data-hour="20">8 PM</span>
+                                <span class="time-label" data-hour="21">9 PM</span>
+                                <span class="time-label" data-hour="22">10 PM</span>
+                                <span class="time-label" data-hour="23">11 PM</span>
+                                <span class="time-label" data-hour="24">12 AM</span>
+                            </div>
+                            <div class="week-day mon" data-date="2025-1-12"></div>
+                            <div class="week-day tue" data-date="2025-1-13"></div>
+                            <div class="week-day wed" data-date="2025-1-14"></div>
+                            <div class="week-day thu" data-date="2025-1-15"></div>
+                            <div class="week-day fri" data-date="2025-1-16"></div>
+                            <div class="week-day sat" data-date="2025-1-17"></div>
+                            <div class="week-day sun" data-date="2025-1-18"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <dialog id="calendar-view" data-calenderID="">
+        <h2 class="no-bottom-margin">
+            <span class="color-indicator"></span>
+            <span class="title"></span>
+        </h2>
+        <p class="category small-text-italic"></p>
+        <p class="description"></p>
+        <button class="closeBtn">Close</button>
+        <button class="editBtn">Edit</button>
+    </dialog>
+
+    <dialog id="calendar-editor" data-calenderID="">
+        <h2>Edit Calendar</h2>
+        <form id="calendar-editor-form">
+            <label>
+                Name:
+                <input type="text" name="name" required>
+            </label>
+            <label>
+                Description:
+                <textarea name="description"></textarea>
+            </label>
+            <label>
+                Category:
+                <select name="category">
+                    <option value="my-calendars">My Calendars</option>
+                    <option value="other-calendars">Other Calendars</option>
+                </select>
+            </label>
+            <label>
+                Color:
+                <input type="color" name="color" value="#ff0000">
+            </label>
+            <div class="form-buttons">
+                <button type="submit">Save</button>
+                <button type="button" class="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
