@@ -53,6 +53,7 @@ html, body {
     height: 100vh;
 
     overflow: hidden;
+    color: var(--fg);
 }
 
 header {
@@ -159,6 +160,8 @@ input[type="color"] {
     height: 100%;
     flex-shrink: 1;
     flex-grow: 1;
+
+    color: black;
 }
 
 .week .week-day:last-child {
@@ -248,20 +251,22 @@ aside .calendar-list .color-indicator {
     margin-right: 5px;
 
     border-radius: 3px;
+    border: 1px solid var(--fg);
 }
 
 :root[data-theme="light"] aside .calendar-list .new-calendar-item .color-indicator {
     background-image: url("/static/icon/plus-black.svg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 :root[data-theme="dark"] aside .calendar-list .new-calendar-item .color-indicator {
     background-image: url("/static/icon/plus-white.svg");
+}
+
+aside .calendar-list .new-calendar-item .color-indicator {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border: none;
 }
 
 aside .calendar-list .calendar-name:hover {
@@ -353,4 +358,15 @@ aside .wrapper {
 
 .no-bottom-margin {
     margin-bottom: 0;
+}
+
+/*-- responsive ness --*/
+@media (max-width: 1000px) {
+    .layout {
+        grid-template-columns: 1fr; /* Force items into one column */
+    }
+
+    .layout .slider {
+        display: none;
+    }
 }

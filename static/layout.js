@@ -12,16 +12,23 @@ function GetCalendar() {
     const events = {};
     const base = new Date("2025-01-12T00:00:00");
 
-    for (let h = 0; h < 24; h++) {
+    let index = 6;
+    while (index < 24*7) {
+        const h = index;
+        const length = Math.floor(Math.random() * 4) + 1;
+        index += length;
+        if (index % 24 > 16) index += 10;
+        index += Math.floor(Math.random() * 4) + 2;
+
         const start = new Date(base);
         start.setHours(h);
 
         const end = new Date(start);
-        end.setHours(h + 1);
+        end.setHours(h + length);
 
         // random color for each event
         events[`event${h + 1}`] = {
-            color: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+            color: GetColor(),
             start: start.toISOString(),
             end: end.toISOString(),
             title: `Event ${h + 1}`,
@@ -84,10 +91,10 @@ function LoadItems() {
 
 function GetCalendars() {
     return [
-        { id: "1", name: "Personal", color: "#ff0000", description: "My personal calendar", category: "my-calendars" },
-        { id: "2", name: "Work", color: "#00ff00", description: "Work related events", category: "my-calendars" },
-        { id: "3", name: "Holidays", color: "#0000ff", description: "Public holidays", category: "my-calendars" },
-        { id: "4", name: "Team Events", color: "#ffff00", description: "Events for the team", category: "other-calendars" }
+        { id: "1", name: "Personal", color: GetColor(), description: "My personal calendar", category: "my-calendars" },
+        { id: "2", name: "Work", color: GetColor(), description: "Work related events", category: "my-calendars" },
+        { id: "3", name: "Holidays", color: GetColor(), description: "Public holidays", category: "my-calendars" },
+        { id: "4", name: "Team Events", color: GetColor(), description: "Events for the team", category: "other-calendars" }
     ];
 }
 
@@ -163,7 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
         let subBoxMargin = getComputedStyle(document.documentElement).getPropertyValue("--sub-box-margin");
         subBoxMargin = parseFloat(subBoxMargin);
 
-        document.documentElement.style.setProperty("--sidebar-width", e.clientX - subBoxMargin + "px");
+        let sidebarWidth = e.clientX - subBoxMargin;
+        if (sidebarWidth < 175) sidebarWidth = 175;
+
+        document.documentElement.style.setProperty("--sidebar-width", sidebarWidth + "px");
     });
 
     const main = document.querySelector("main");

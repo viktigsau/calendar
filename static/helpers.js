@@ -49,8 +49,11 @@ function rgbToHex(r, g, b) {
 function GetColor() {
     const colors = [
         "#ff0000",
-        "#00ff00",
-        "#0000ff"
+        "#ffff00", "#bb7700", 
+        "#00ff00", "#008800",
+        "#00ffff", "#008888",
+        "#0000ff", "#000088",
+        "#ff00ff", "#6600aa",
     ];
     return colors[Math.floor(Math.random() * colors.length)]
 }
