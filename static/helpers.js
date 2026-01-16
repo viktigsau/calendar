@@ -45,3 +45,12 @@ function rgbToHex(r, g, b) {
         return hex.length === 1 ? "0" + hex : hex;
     }).join("");
 }
+
+function GetColor() {
+    const colors = [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+    ];
+    return colors[Math.floor(Math.random() * colors.length)]
+}

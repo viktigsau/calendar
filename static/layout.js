@@ -96,24 +96,34 @@ function LoadCalendars() {
 
     const calendarEditor = document.querySelector("#calendar-editor");
     const closeEditorBtn = calendarEditor.querySelector(".cancelBtn");
-    closeEditorBtn.addEventListener("click", () => {
-        calendarEditor.close();
-    });
+    closeEditorBtn.addEventListener("click", () => calendarEditor.close());
 
     const calendarView = document.querySelector("#calendar-view");
     const closeBtn = calendarView.querySelector(".closeBtn");
-    closeBtn.addEventListener("click", () => {
-        calendarView.close();
-    });
+    closeBtn.addEventListener("click", () => calendarView.close());
     const editBtn = calendarView.querySelector(".editBtn");
     editBtn.addEventListener("click", () => {
         calendarEditor.querySelector("input[name='name']").value = calendarView.querySelector(".title").textContent;
         calendarEditor.querySelector("textarea[name='description']").value = calendarView.querySelector(".description").textContent;
         calendarEditor.querySelector("input[name='color']").value = rgbToHex(getComputedStyle(calendarView.querySelector(".color-indicator")).backgroundColor);
         calendarEditor.dataset.calenderID = calendarView.dataset.calenderID;
+        calendarEditor.querySelector("input[name='id']").value = calendarView.dataset.calendarID;
         calendarEditor.showModal();
         calendarView.close();
     });
+
+    const newCalendarItems = document.querySelectorAll(".new-calendar-item");
+    const calendarCreator = document.querySelector("#calendar-creator");
+    const closeCreatorBtn = calendarCreator.querySelector(".cancelBtn");
+    closeCreatorBtn.addEventListener("click", () => calendarCreator.close());
+    for (const newCalendarItem of newCalendarItems) {
+        const category = newCalendarItem.parentNode.dataset.category;
+
+        newCalendarItem.addEventListener("click", () => {
+            calendarCreator.querySelector(`select[name='category']`).value = category;
+            calendarCreator.showModal();
+        });
+    }
 
     for (const calendar of calendars) {
         const calendarList = document.querySelector(`.calendar-list[data-category="${calendar.category}"]`);
@@ -140,7 +150,9 @@ function LoadCalendars() {
             calendarView.showModal();
         });
 
-        calendarList.appendChild(calendarItem);
+        const newCalendarBtn = calendarList.querySelector(".new-calendar-item");
+        if (newCalendarBtn) calendarList.insertBefore(calendarItem, newCalendarBtn)
+        else calendarList.appendChild(calendarItem);
     }
 }
 

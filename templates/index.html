@@ -113,6 +113,36 @@ the Free Software Foundation, either version 3 of the License, or
     <dialog id="calendar-editor" data-calenderID="">
         <h2>Edit Calendar</h2>
         <form id="calendar-editor-form">
+            <input type="text" name="id" hidden>
+            <label>
+                Name:
+                <input type="text" name="name" required>
+            </label>
+            <label>
+                Description:
+                <textarea name="description"></textarea>
+            </label>
+            <label>
+                Category:
+                <select name="category">
+                    <option value="my-calendars">My Calendars</option>
+                    <option value="other-calendars">Other Calendars</option>
+                </select>
+            </label>
+            <label>
+                Color:
+                <input type="color" name="color" value="#ff0000">
+            </label>
+            <div class="form-buttons">
+                <button type="submit">Save</button>
+                <button type="button" class="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="calendar-creator">
+        <h2>New Calendar</h2>
+        <form id="calendar-creator-form">
             <label>
                 Name:
                 <input type="text" name="name" required>
