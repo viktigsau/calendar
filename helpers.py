@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import os
+
 class StrictDict(dict):
     def __init__(self, *args, type_map: dict | None=None, **kwargs):
         # Let dict do its normal initialization
@@ -35,8 +37,9 @@ def load_conf(file:str="conf/server.conf", default_path:str="conf/default-server
     with open(default_path) as default:
         config = default.read().split("\n")
 
-    with open(file) as conf:
-        config += conf.read().split("\n")
+    if os.path.exists(file):
+        with open(file) as conf:
+            config += conf.read().split("\n")
 
     out: dict[str, str | int | float | bool] = {}
 
